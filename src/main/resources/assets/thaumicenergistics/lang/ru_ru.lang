@@ -45,6 +45,9 @@ gui.thaumicenergistics.vis_required_out_of=Вис стоимость: %s/%s
 gui.thaumicenergistics.vis_available=%s Доступно
 gui.thaumicenergistics.vis_discount=%s%% Скидка
 
+# Chat
+chat.thaumicenergistics.missing_wireless_handler=Не найден wireless handler для %s. Сообщите разработчику!
+
 # ИЗ THAUMCRAFT en_US.lang
 # ЛУЧШЕ ВСЕГО ПЕРЕПРОВЕРИТЬ ПОСЛЕДНИЙ ФАЙЛ LANG ДЛЯ ИЗМЕНЕНИЯ ФОРМАТИРОВАНИЯ
 #

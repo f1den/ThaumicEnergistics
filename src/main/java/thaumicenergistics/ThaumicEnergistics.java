@@ -23,6 +23,9 @@ import thaumicenergistics.api.IThEBlocks;
 import thaumicenergistics.api.IThEItems;
 import thaumicenergistics.api.IThEUpgrades;
 import thaumicenergistics.api.ThEApi;
+import thaumicenergistics.api.wireless.IEssentiaTermWirelessHandler;
+import thaumicenergistics.api.wireless.IThEWireless;
+import thaumicenergistics.api.wireless.IThEWirelessObject;
 import thaumicenergistics.client.ThEItemColors;
 import thaumicenergistics.client.gui.GuiHandler;
 import thaumicenergistics.client.render.ArcaneAssemblerRenderer;
@@ -33,6 +36,7 @@ import thaumicenergistics.integration.ThEIntegrationLoader;
 import thaumicenergistics.network.PacketHandler;
 import thaumicenergistics.tile.TileArcaneAssembler;
 import thaumicenergistics.util.ForgeUtil;
+import thaumicenergistics.wireless.EssentiaTermWirelessHandler;
 
 /**
  * <strong>Thaumic Energistics</strong>
@@ -94,6 +98,7 @@ public class ThaumicEnergistics {
         IThEUpgrades upgrades = ThaumicEnergisticsApi.instance().upgrades();
         IThEItems items = ThaumicEnergisticsApi.instance().items();
         IThEBlocks blocks = ThaumicEnergisticsApi.instance().blocks();
+        IThEWireless wireless = ThaumicEnergisticsApi.instance().wireless();
 
         upgrades.registerUpgrade(items.arcaneTerminal(), upgrades.arcaneCharger(), 1);
         upgrades.registerUpgrade(items.arcaneInscriber(), upgrades.blankKnowledgeCore(), 1);
@@ -101,6 +106,11 @@ public class ThaumicEnergistics {
         upgrades.registerUpgrade(blocks.arcaneAssembler(), upgrades.knowledgeCore(), 1);
         upgrades.registerUpgrade(blocks.arcaneAssembler(), upgrades.arcaneCharger(), 1);
         upgrades.registerUpgrade(blocks.arcaneAssembler(), upgrades.cardSpeed(), 5);
+
+        wireless.registerWirelessHandler(IEssentiaTermWirelessHandler.class, new EssentiaTermWirelessHandler());
+        items.wirelessEssentiaTerminal().maybeItem().ifPresent(item ->
+                ThEApi.instance().wireless().getWirelessHandler(IEssentiaTermWirelessHandler.class).registerObject((IThEWirelessObject) item)
+        );
 
         proxy.init(event);
 

@@ -138,7 +138,7 @@ public class TileArcaneAssembler extends TileNetwork implements IThESubscribable
 
     @Override
     public void openGUI(EntityPlayer player) {
-        GuiHandler.openGUI(this.getGUI(), player, this.getPos());
+        GuiHandler.openGUI(this.getGUI(), player, this.getPos()); // ModGUIs.ESSENTIA_TERMINAL;
     }
 
     @Override

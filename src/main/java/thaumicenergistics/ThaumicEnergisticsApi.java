@@ -1,6 +1,7 @@
 package thaumicenergistics;
 
 import thaumicenergistics.api.*;
+import thaumicenergistics.api.wireless.IThEWireless;
 import thaumicenergistics.config.ThEConfig;
 import thaumicenergistics.init.ThEBlocks;
 import thaumicenergistics.init.ThEItems;
@@ -8,6 +9,7 @@ import thaumicenergistics.init.ThESounds;
 import thaumicenergistics.init.ThETextures;
 import thaumicenergistics.lang.ThELang;
 import thaumicenergistics.upgrade.ThEUpgrades;
+import thaumicenergistics.wireless.ThEWireless;
 
 /**
  * @author BrockWS
@@ -19,6 +21,7 @@ public class ThaumicEnergisticsApi implements IThEApi {
     private final IThEItems items;
     private final IThEBlocks blocks;
     private final IThEUpgrades upgrades;
+    private IThEWireless wireless;
     private final IThEConfig config;
     private final IThELang lang;
     private final IThETextures textures;
@@ -28,6 +31,7 @@ public class ThaumicEnergisticsApi implements IThEApi {
         this.items = new ThEItems();
         this.blocks = new ThEBlocks();
         this.upgrades = new ThEUpgrades(this.items());
+        this.wireless = new ThEWireless();
         this.config = new ThEConfig();
         this.lang = new ThELang();
         this.textures = new ThETextures();
@@ -53,6 +57,10 @@ public class ThaumicEnergisticsApi implements IThEApi {
     public IThEUpgrades upgrades() {
         return this.upgrades;
     }
+
+    @Override
+    public IThEWireless wireless() { return this.wireless; }
+
 
     @Override
     public IThEConfig config() {

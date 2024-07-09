@@ -68,6 +68,7 @@ public class ThEItems implements IThEItems {
     private final IItemDefinition itemKnowledgeCore;
     private final IItemDefinition itemBlankKnowledgeCore;
     private final IItemDefinition itemDummyAspect;
+    private final IItemDefinition itemWirelessEssentiaTerminal;
 
     public ThEItems() {
         this.itemEssentiaCell1k = ThEItems.createItem(new ItemEssentiaCell("1k", 1024, 12));
@@ -91,6 +92,7 @@ public class ThEItems implements IThEItems {
         this.itemKnowledgeCore = ThEItems.createItem(new ItemKnowledgeCore("knowledge_core", false));
         this.itemBlankKnowledgeCore = ThEItems.createItem(new ItemKnowledgeCore("blank_knowledge_core", true));
         this.itemDummyAspect = ThEItems.createItem(new ItemDummyAspect());
+        this.itemWirelessEssentiaTerminal = ThEItems.createItem(new ItemWirelessEssentiaTerminal("wireless_essentia_terminal"));
     }
 
     @Override
@@ -197,4 +199,7 @@ public class ThEItems implements IThEItems {
     public IItemDefinition dummyAspect() {
         return this.itemDummyAspect;
     }
+
+    @Override
+    public IItemDefinition wirelessEssentiaTerminal() { return this.itemWirelessEssentiaTerminal; }
 }
